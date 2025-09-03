@@ -23,6 +23,6 @@ const blogSchema = new Schema(
 );
 
 // const Blog = model("user", userSchema);
-const Blog = model("blog", userSchema);
+const Blog = model("blog", blogSchema);
 
 module.exports = Blog;
