@@ -3,7 +3,7 @@
   data-bs-theme="dark"
 >
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Blogify</a>
+    <a class="navbar-brand" href="/">Blogify</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -18,7 +18,7 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <% if (locals.user) { %>
         <li class="nav-item">
@@ -32,10 +32,18 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Sarthak Verma
+            <%= locals.user.fullName %>
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/user/logout">Logout</a></li>
+            <li>
+              <a
+                class="dropdown-item text-danger"
+                href="#"
+                onclick="confirmDelete()"
+                >Delete Your Account</a
+              >
+            </li>
           </ul>
         </li>
         <% } else { %>
@@ -56,3 +64,15 @@
   <div class="alert alert-danger" role="alert"><%= locals.error %></div>
 </div>
 <% } %>
+
+<script>
+  function confirmDelete() {
+    if (
+      confirm(
+        "Are you sure you want to delete your account? This action cannot be undone."
+      )
+    ) {
+      window.location.href = "/user/delete";
+    }
+  }
+</script>

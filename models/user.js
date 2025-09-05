@@ -7,6 +7,7 @@ const userSchema = new Schema(
     fullName: {
       type: String,
       required: true,
+      unique: true,
     },
     email: {
       type: String,
@@ -32,6 +33,12 @@ const userSchema = new Schema(
   },
   { timestamps: true }
 );
+
+userSchema.pre("remove", async function (next) {
+  await model("blog").deleteMany({ createdBy: this._id });
+  await model("comment").deleteMany({ createdBy: this._id });
+  next();
+});
 
 userSchema.pre("save", function (next) {
   const user = this;

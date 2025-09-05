@@ -22,7 +22,6 @@ const blogSchema = new Schema(
   { timestamps: true }
 );
 
-// const Blog = model("user", userSchema);
 const Blog = model("blog", blogSchema);
 
 module.exports = Blog;
