@@ -1,16 +1,17 @@
 {
   "name": "blogify",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "cookie-parser": "^1.4.7",
+    "dotenv": "^17.2.2",
     "ejs": "^3.1.10",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
